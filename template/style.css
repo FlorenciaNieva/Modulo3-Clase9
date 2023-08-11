@@ -1,0 +1,14 @@
+
+
+.img1 {
+    height: 400px;
+}
+
+.img2, .img3, .img4 {
+    height: 194px;
+}
+
+.card {
+    height: 40vh;
+    width: 20%;
+}
