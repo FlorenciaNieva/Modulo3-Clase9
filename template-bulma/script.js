@@ -1,7 +1,23 @@
 const $ = (Selector) => document.querySelector(Selector);
-
+const $$ = (Selector) => document.querySelectorAll(Selector);
 //Crea un ID random
 const randomID = () => self.crypto.randomUUID();
+
+const tienda = JSON.parse(localStorage.getItem('Florería')) || {
+    usuarios: [],
+    ventas: [],
+    favoritos: [],
+    carrito: [],
+};
+
+const actualizarTienda = (datos) => {
+    localStorage.setItem("Florería", JSON.stringify(datos));
+}
+
+const traerDatos = () => {
+    //Buscar lo que tenia almacenada en el local storage
+    return JSON.parse(localStorage.getItem('Florería'));
+}
 
 const productos = [{
     id: randomID(),
@@ -35,31 +51,59 @@ const crearCards = (listaProductos) => {
     listaProductos.forEach((producto) => {
         cardContainer.innerHTML += `<div class="card">
         <div class="card-image">
-        <figure class="image is-4by3">
-            <img src="${producto.foto}" alt="Image plant" />
+            <figure class="image is-4by3">
+                <img src="${producto.foto}" alt="Image plant" />
             </figure>
         </div>
         <div class="card-content">
             <div class="content">
                 <h5>${producto.nombre}</h5>
                 <h5>$${producto.precio}</h5>
-                <button class="button is-primary" id="${producto.id}">Comprar</button>
+                <button class="button is-primary add-button" id="${producto.id}">Agregar al carrito</button>
             </div>
         </div>
     </div> `
     });
 }
+
 crearCards(productos);
 
-const carrito = [];
-
 const agregarAlCarrito = (idProducto) => {
-    carrito.push(idProducto);
-    let productoFiltrado = productos.filter(prop => productoFiltrado.id === idProducto);
+    let productoFiltrado = productos.filter((prod) => prod.id === idProducto);
+    if(!tienda.carrito.includes(productoFiltrado[0])) {
+        tienda.carrito.push(productoFiltrado[0]);
+    }
+    actualizarTienda(tienda);
+    mostrarCarrito();
+};
+
+const botones = $$('.add-button');
+
+botones.forEach((boton) => 
+    boton.addEventListener('click', () => agregarAlCarrito(boton.id))
+);
+
+const eliminarDelCarrito = () => {
+    let datosActualizados = traerDatos();
 }
 
-agregarAlCarrito();
+//Activar modal al hacer click en el carrito
+$('#carrito').addEventListener('click', () => {
+    $('#modal').classList.add('is-active');
+    
+});
 
-const botones = $$('button');
+//Cerrar el modal al hacer click en la cruz
+$('#close-modal').addEventListener('click', () => {
+    $('#modal').classList.remove('is-active');
+});
 
-botones.forEach((boton) => boton.addEventListener('click', () => agregarAlCarrito(boton.id)));
+//Mostrar en el modal del carrito lo que agrege
+const mostrarCarrito = () => {
+    $('#modal-content').innerHTML = "";
+    traerDatos().carrito.forEach(
+        (item) => ($('#modal-content').innerHTML += `<li>${item.nombre}</li>`)
+    );
+};
+
+mostrarCarrito();

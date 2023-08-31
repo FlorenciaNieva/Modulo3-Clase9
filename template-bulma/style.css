@@ -2,12 +2,21 @@
     width: 500px;
 }
 
-.img1 {
-    height: 400px;
+img {
+    height: 100%;
+    width: 100%;
 }
 
-.img2, .img3, .img4 {
-    height: 194px;
+.img1 {
+    height: 552px;
+}
+
+.img2, .img3 {
+    height: 250px;
+}
+
+.img4 {
+    height: 290px;
 }
 
 .card {

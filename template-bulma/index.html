@@ -19,8 +19,8 @@
             </div>
             <div id="navbarBasicExample" class="navbar-menu">
                 <div class="navbar-start is-align-items-center">
-                    <a href="">
-                        <i class="fa-solid fa-cart-shopping has-text-black"></i>
+                    <a href="#">
+                        <i class="fa-solid fa-cart-shopping has-text-black" id="carrito"></i>
                     </a> 
                     
                 </div>
@@ -52,22 +52,39 @@
         </section>
         <div class="container mt-6 mb-6">
             <div class="columns">
-                <div class="column is-4 img1 has-background-info mr-3"></div>
+                <div class="column is-4 img1 has-background-info mr-3">
+                    <img src="https://plus.unsplash.com/premium_photo-1667932991674-c515997d49d9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" alt="">
+                </div>
                 <div class="column">
                     <div class="columns">
-                        <div class="column img2 has-background-success mr-3" ></div>
-                        <div class="column img3 has-background-warning"></div>
+                        <div class="column img2 has-background-success mr-3">
+                            <img src="https://images.unsplash.com/photo-1507392671925-cbcf789b478d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="">
+                        </div>
+                        <div class="column img3 has-background-warning">
+                            <img src="https://images.unsplash.com/photo-1422949262308-76e6e4906af4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1474&q=80" alt="">
+                        </div>
                     </div>
                     <div class="columns">
-                        <div class="column img4 has-background-danger mt-3"></div>
+                        <div class="column img4 has-background-danger mt-3">
+                            <img src="https://images.unsplash.com/photo-1489769002049-ccd828976a6c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1661&q=80" alt="">
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
         <section class="mt-6">
-            <h2 class="title is-3 has-text-centered">Section card</h2>
-            <div class="container is-flex is-justify-content-space-between" id="card-container"></div>
+            <h2 class="title is-3 has-text-centered">Destacados</h2>
+            <div class="container is-flex is-justify-content-space-between" id="card-container">
+                <!-- Función crearCard -->
+            </div>
         </section>
+
+        <!-- Modal carrito -->
+        <div class="modal" id="modal">
+            <div class="modal-background"></div>
+            <div class="modal-content has-background-white" id="modal-content"></div>
+            <button class="modal-close is-large" id="close-modal" aria-label="close"></button>
+        </div>
 
         <script src="script.js"></script>
     </body>
